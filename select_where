@@ -1,0 +1,130 @@
+select *
+from jobs
+where min_salary>10000;
+
+select first_name,start_date
+from employees,job_history
+where job_history.employee_id = employees.employee_id
+and to_char(start_date,'YYYY')
+between 1990 and 1999;
+
+select distinct first_name,employees.last_name
+from employees,job_history
+where job_history.employee_id = employees.employee_id
+and employees.job_id='IT_Prog' or employees.job_id='SA_MAN';
+
+select *
+from employees
+where employee_id in 
+(select employee_id
+from job_history
+where start_date > '01/JAN/1990');
+
+select *
+from employees
+where employee_id in (150,160);
+
+select first_name,salary,commission_pct,hire_date
+from employees
+where salary<10000;
+
+select job_title,max_salary-min_salary as Salary_Difference
+from jobs
+where max_salary between 10000 and 20000;
+
+select first_name, round(salary)
+from employees;
+
+select *
+from jobs 
+order by job_title desc;
+
+select *
+from employees
+where first_name like 'S%' or last_name like 'S%';
+
+/*11-20*/
+select *
+from employees,job_history
+where job_history.employee_id = employees.employee_id
+and to_char(start_date,'MM')='01';
+
+select * 
+from employees
+where (commission_pct is null) 
+and salary between 5000 and 10000
+and department_id=30;
+
+select distinct employees.first_name,to_char(add_months(start_date,1),'dd-mon-yyyy') "next month"
+from employees,job_history
+where job_history.employee_id = employees.employee_id;
+ 
+select employees.first_name,round((job_history.end_date-job_history.start_date)/365,1) as Experience
+from employees,job_history
+where job_history.employee_id = employees.employee_id;
+
+select *
+from employees,job_history
+where job_history.employee_id = employees.employee_id
+and to_char(start_date,'YYYY')='1989';
+
+select initcap(first_name),initcap(last_name)
+from employees;
+
+select substr(job_title, 1, instr(job_title, ' ') - 1)
+from Jobs;
+
+select first_name,last_name,length(first_name) 
+from employees
+where last_name like '___b%';
+
+select upper(first_name),lower(email)
+from employees
+where lower(first_name)=lower(email);
+
+select *
+from employees,job_history
+where job_history.employee_id = employees.employee_id
+and to_char(start_date,'YYYY')=to_char(sysdate, 'yyyy');
+
+/*21 to 30*/
+
+select trunc(sysdate) - to_date('2011-1-1','YYYY-mm-dd') diff
+from dual;
+
+select manager_id,count(employee_id)
+from employees
+group by manager_id;
+
+select count(employee_id)
+from employees
+where to_char(hire_date,'dd')>'15';
+
+select country_id,count(city)
+from locations
+group by country_id;
+
+select department_id,avg(salary)
+from employees
+where (commission_pct is not null)
+group by department_id;
+
+select job_id,count(employee_id),sum(salary),max(salary)-min(salary)
+from employees
+group by job_id;
+
+select job_id
+from employees
+group by job_id
+having avg(salary)>10000;
+
+/*31-40*/
+select department_id
+from employees
+group by department_id
+having count(employee_id) > 5;
+
+select employee_id
+from job_history
+group by employee_id
+having count(*)>0;
