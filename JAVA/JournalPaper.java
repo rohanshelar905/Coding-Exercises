@@ -16,9 +16,8 @@ class JournalPaper extends WrittenItem
 
 	@Override
 	public String toString() {
-		return "JournalPaper [year=" + year + ", getAuthorname()=" + getAuthorname() + ", toString()="
-				+ super.toString() + ", getId()=" + getId() + ", getTitle()=" + getTitle() + ", getCopies()="
-				+ getCopies() + "]";
+		return "JournalPaper [year=" + year
+				+ super.toString() +"]";
 	}
 
 	
