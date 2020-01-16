@@ -18,12 +18,12 @@ public class Regx {
 		WebElement we = driver.findElement(By.xpath("//*[@di='gbqfq']"));
 		we.sendKeys("not able to see sponsored links on google search");
 		driver.findElement(By.xpath("//*[@id='gbqfq']")).click();
-		List <WebElement> allElements = driver.findElement(By.xpath("//h3/a"));
-		
-		for(WebElement element : allElements)
-		{
-			allElements.size();
-			System.out.println(element.getText());
-		}
+//		//List <WebElement> allElements = driver.findElement(By.xpath("//h3/a"));
+//		
+//		for(WebElement element : allElements)
+//		{
+//			allElements.size();
+//			System.out.println(element.getText());
+//		}
 	}
 }

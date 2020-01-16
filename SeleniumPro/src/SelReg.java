@@ -26,7 +26,8 @@ public class SelReg {
 	
 		String regpassword = "password";
 		if (regpassword.matches("p[a-z]*d")) {
-			WebElement password = driver.findElement(By.id("password"));
+//			WebElement password = driver.findElement(By.id("password"));
+			WebElement password = driver.findElement(By.xpath("//*[@id='p[a-z]*']"));
 			password.sendKeys("qwerty@2048");
 		}
 		driver.findElement(By.className("btn-primary")).click();
